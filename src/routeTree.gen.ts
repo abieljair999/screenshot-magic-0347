@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MananaRouteImport } from './routes/manana'
+import { Route as NocheRouteImport } from './routes/noche'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MananaRoute = MananaRouteImport.update({
+  id: '/manana',
+  path: '/manana',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NocheRoute = NocheRouteImport.update({
+  id: '/noche',
+  path: '/noche',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/manana': typeof MananaRoute
+  '/noche': typeof NocheRoute
+  '/onboarding': typeof OnboardingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/manana': typeof MananaRoute
+  '/noche': typeof NocheRoute
+  '/onboarding': typeof OnboardingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/manana': typeof MananaRoute
+  '/noche': typeof NocheRoute
+  '/onboarding': typeof OnboardingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/manana' | '/noche' | '/onboarding'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/manana' | '/noche' | '/onboarding'
+  id: '__root__' | '/' | '/manana' | '/noche' | '/onboarding'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MananaRoute: typeof MananaRoute
+  NocheRoute: typeof NocheRoute
+  OnboardingRoute: typeof OnboardingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/manana': {
+      id: '/manana'
+      path: '/manana'
+      fullPath: '/manana'
+      preLoaderRoute: typeof MananaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/noche': {
+      id: '/noche'
+      path: '/noche'
+      fullPath: '/noche'
+      preLoaderRoute: typeof NocheRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MananaRoute: MananaRoute,
+  NocheRoute: NocheRoute,
+  OnboardingRoute: OnboardingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
