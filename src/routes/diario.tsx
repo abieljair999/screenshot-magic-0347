@@ -33,7 +33,7 @@ function Diario() {
     const d = new Date();
     d.setDate(d.getDate() - (6 - i));
     const key = hoyKey(d);
-    return { key, etiqueta: DIAS[(d.getDay() + 6) % 7], noche: noches[key] };
+    return { key, etiqueta: DIAS[(d.getDay() + 6) % 7] ?? "", noche: noches[key] };
   });
 
   const detalle = noches[sel];

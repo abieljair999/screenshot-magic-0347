@@ -3,7 +3,7 @@ import type { CheckinManana, Noche, Perfil } from "./types";
 
 export function toMin(hhmm: string): number {
   const [h, m] = hhmm.split(":").map(Number);
-  return h * 60 + m;
+  return (h ?? 0) * 60 + (m ?? 0);
 }
 
 export function toHHMM(min: number): string {
@@ -51,7 +51,7 @@ export function generarPlan(perfil: Perfil, cafeinaAdelantada = false): ItemPlan
     const corte = cama - (8 * 60 + (cafeinaAdelantada ? 60 : 0));
     return {
       numero: i + 1,
-      regla: reglas[i % reglas.length],
+      regla: reglas[i % reglas.length] ?? "",
       bajarLuces: toHHMM(cama - (perfil.modo === "padres" ? 30 : 45)),
       camaObjetivo: toHHMM(cama),
       despertar: toHHMM(cama + sueñoObjetivo),
@@ -75,13 +75,13 @@ export function recuperacion(c: CheckinManana): "baja" | "media" | "alta" {
 
 export function generarInsight(c: CheckinManana, numero: number): string {
   const nivel = recuperacion(c);
-  if (c.sabotaje === "cafeina") return INSIGHTS_MALOS[1];
-  if (c.sabotaje === "pantalla") return INSIGHTS_MALOS[0];
-  if (c.sabotaje === "estres") return INSIGHTS_MALOS[3];
-  if (c.sabotaje === "ruido" || c.sabotaje === "bebe") return INSIGHTS_MALOS[4];
-  if (nivel === "baja") return INSIGHTS_MALOS[2];
-  if (nivel === "alta") return INSIGHTS_BUENOS[numero % INSIGHTS_BUENOS.length];
-  return INSIGHTS_BUENOS[(numero + 2) % INSIGHTS_BUENOS.length];
+  if (c.sabotaje === "cafeina") return INSIGHTS_MALOS[1]!;
+  if (c.sabotaje === "pantalla") return INSIGHTS_MALOS[0]!;
+  if (c.sabotaje === "estres") return INSIGHTS_MALOS[3]!;
+  if (c.sabotaje === "ruido" || c.sabotaje === "bebe") return INSIGHTS_MALOS[4]!;
+  if (nivel === "baja") return INSIGHTS_MALOS[2]!;
+  if (nivel === "alta") return INSIGHTS_BUENOS[numero % INSIGHTS_BUENOS.length]!;
+  return INSIGHTS_BUENOS[(numero + 2) % INSIGHTS_BUENOS.length]!;
 }
 
 export function estadoNoche(n: Noche | undefined): "hecha" | "parcial" | "fallida" | "futura" {

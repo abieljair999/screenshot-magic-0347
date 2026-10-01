@@ -299,7 +299,7 @@ function Stepper({ valor, onChange }: { valor: string; onChange: (v: string) => 
 }
 
 function Revelacion({ perfil, onConfirmar }: { perfil: Perfil; onConfirmar: () => void }) {
-  const item = generarPlan(perfil)[0];
+  const item = generarPlan(perfil)[0]!;
   return (
     <div className="mt-4">
       <Etiqueta>Tu plan está listo</Etiqueta>

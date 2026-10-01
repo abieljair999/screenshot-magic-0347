@@ -64,7 +64,7 @@ export function useNoche() {
         const numero = previa?.numeroPlan ?? (e.perfil ? numeroNoche(e.perfil) : 1);
         const regla =
           previa?.regla ??
-          (e.perfil ? generarPlan(e.perfil, e.cafeinaAdelantada)[(numero - 1) % 14].regla : "");
+          (e.perfil ? generarPlan(e.perfil, e.cafeinaAdelantada)[(numero - 1) % 14]?.regla ?? "" : "");
         return {
           ...e,
           noches: {
