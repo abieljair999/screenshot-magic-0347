@@ -1,0 +1,121 @@
+{
+  "version": 1,
+  "sdk_version": "3.0.4",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "pixel-perfect-screenshot",
+      "version": "0.1.0",
+      "title": "Pixel Perfect Screenshot"
+    },
+    "tools": [
+      {
+        "name": "generar_plan",
+        "title": "Generar plan de 14 noches",
+        "description": "Calcula el plan de 14 noches de Noche Quieta (regla, luces, cama, despertar y corte de cafeína) para un modo y horario.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "modo": {
+              "type": "string",
+              "enum": [
+                "padres",
+                "turnos",
+                "gym"
+              ],
+              "description": "Modo del plan."
+            },
+            "horaDespertar": {
+              "type": "string",
+              "pattern": "^\\d{2}:\\d{2}$",
+              "description": "Hora de despertar HH:MM, p. ej. 06:30."
+            },
+            "horaCama": {
+              "description": "Hora habitual de dormir HH:MM (opcional).",
+              "type": "string",
+              "pattern": "^\\d{2}:\\d{2}$"
+            },
+            "cafeinaAdelantada": {
+              "description": "Adelantar 1 h el corte de cafeína.",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "modo",
+            "horaDespertar"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "reglas_modo",
+        "title": "Reglas por modo",
+        "description": "Devuelve la descripción y las reglas nocturnas de un modo de Noche Quieta.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "modo": {
+              "type": "string",
+              "enum": [
+                "padres",
+                "turnos",
+                "gym"
+              ],
+              "description": "Modo a consultar."
+            }
+          },
+          "required": [
+            "modo"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "protocolo_emergencia",
+        "title": "Protocolo de emergencia",
+        "description": "Devuelve los pasos de los protocolos nocturnos: 'sigo-despierto' o 'tres-am'.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "tipo": {
+              "type": "string",
+              "enum": [
+                "sigo-despierto",
+                "tres-am"
+              ],
+              "description": "Protocolo a consultar."
+            }
+          },
+          "required": [
+            "tipo"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}

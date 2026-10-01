@@ -26,7 +26,7 @@ export default defineTool({
         pantallas: "nunca",
         despertares: "casi-no",
         contexto: [],
-        objetivo: "dormir-mejor" as never,
+        objetivo: "horario-estable",
         inicio: "2026-01-01",
       },
       cafeinaAdelantada ?? false,
