@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AjustesRouteImport } from './routes/ajustes'
+import { Route as DespiertoRouteImport } from './routes/despierto'
+import { Route as DiarioRouteImport } from './routes/diario'
+import { Route as MadrugadaRouteImport } from './routes/madrugada'
+import { Route as MananaRouteImport } from './routes/manana'
+import { Route as NocheRouteImport } from './routes/noche'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as PlanRouteImport } from './routes/plan'
+import { Route as SuscripcionRouteImport } from './routes/suscripcion'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AjustesRoute = AjustesRouteImport.update({
+  id: '/ajustes',
+  path: '/ajustes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DespiertoRoute = DespiertoRouteImport.update({
+  id: '/despierto',
+  path: '/despierto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiarioRoute = DiarioRouteImport.update({
+  id: '/diario',
+  path: '/diario',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MadrugadaRoute = MadrugadaRouteImport.update({
+  id: '/madrugada',
+  path: '/madrugada',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MananaRoute = MananaRouteImport.update({
+  id: '/manana',
+  path: '/manana',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NocheRoute = NocheRouteImport.update({
+  id: '/noche',
+  path: '/noche',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlanRoute = PlanRouteImport.update({
+  id: '/plan',
+  path: '/plan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuscripcionRoute = SuscripcionRouteImport.update({
+  id: '/suscripcion',
+  path: '/suscripcion',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ajustes': typeof AjustesRoute
+  '/despierto': typeof DespiertoRoute
+  '/diario': typeof DiarioRoute
+  '/madrugada': typeof MadrugadaRoute
+  '/manana': typeof MananaRoute
+  '/noche': typeof NocheRoute
+  '/onboarding': typeof OnboardingRoute
+  '/plan': typeof PlanRoute
+  '/suscripcion': typeof SuscripcionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ajustes': typeof AjustesRoute
+  '/despierto': typeof DespiertoRoute
+  '/diario': typeof DiarioRoute
+  '/madrugada': typeof MadrugadaRoute
+  '/manana': typeof MananaRoute
+  '/noche': typeof NocheRoute
+  '/onboarding': typeof OnboardingRoute
+  '/plan': typeof PlanRoute
+  '/suscripcion': typeof SuscripcionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ajustes': typeof AjustesRoute
+  '/despierto': typeof DespiertoRoute
+  '/diario': typeof DiarioRoute
+  '/madrugada': typeof MadrugadaRoute
+  '/manana': typeof MananaRoute
+  '/noche': typeof NocheRoute
+  '/onboarding': typeof OnboardingRoute
+  '/plan': typeof PlanRoute
+  '/suscripcion': typeof SuscripcionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/ajustes'
+    | '/despierto'
+    | '/diario'
+    | '/madrugada'
+    | '/manana'
+    | '/noche'
+    | '/onboarding'
+    | '/plan'
+    | '/suscripcion'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/ajustes'
+    | '/despierto'
+    | '/diario'
+    | '/madrugada'
+    | '/manana'
+    | '/noche'
+    | '/onboarding'
+    | '/plan'
+    | '/suscripcion'
+  id:
+    | '__root__'
+    | '/'
+    | '/ajustes'
+    | '/despierto'
+    | '/diario'
+    | '/madrugada'
+    | '/manana'
+    | '/noche'
+    | '/onboarding'
+    | '/plan'
+    | '/suscripcion'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AjustesRoute: typeof AjustesRoute
+  DespiertoRoute: typeof DespiertoRoute
+  DiarioRoute: typeof DiarioRoute
+  MadrugadaRoute: typeof MadrugadaRoute
+  MananaRoute: typeof MananaRoute
+  NocheRoute: typeof NocheRoute
+  OnboardingRoute: typeof OnboardingRoute
+  PlanRoute: typeof PlanRoute
+  SuscripcionRoute: typeof SuscripcionRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ajustes': {
+      id: '/ajustes'
+      path: '/ajustes'
+      fullPath: '/ajustes'
+      preLoaderRoute: typeof AjustesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/despierto': {
+      id: '/despierto'
+      path: '/despierto'
+      fullPath: '/despierto'
+      preLoaderRoute: typeof DespiertoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diario': {
+      id: '/diario'
+      path: '/diario'
+      fullPath: '/diario'
+      preLoaderRoute: typeof DiarioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/madrugada': {
+      id: '/madrugada'
+      path: '/madrugada'
+      fullPath: '/madrugada'
+      preLoaderRoute: typeof MadrugadaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manana': {
+      id: '/manana'
+      path: '/manana'
+      fullPath: '/manana'
+      preLoaderRoute: typeof MananaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/noche': {
+      id: '/noche'
+      path: '/noche'
+      fullPath: '/noche'
+      preLoaderRoute: typeof NocheRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/plan': {
+      id: '/plan'
+      path: '/plan'
+      fullPath: '/plan'
+      preLoaderRoute: typeof PlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/suscripcion': {
+      id: '/suscripcion'
+      path: '/suscripcion'
+      fullPath: '/suscripcion'
+      preLoaderRoute: typeof SuscripcionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AjustesRoute: AjustesRoute,
+  DespiertoRoute: DespiertoRoute,
+  DiarioRoute: DiarioRoute,
+  MadrugadaRoute: MadrugadaRoute,
+  MananaRoute: MananaRoute,
+  NocheRoute: NocheRoute,
+  OnboardingRoute: OnboardingRoute,
+  PlanRoute: PlanRoute,
+  SuscripcionRoute: SuscripcionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
