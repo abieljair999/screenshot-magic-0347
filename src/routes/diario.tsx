@@ -93,7 +93,11 @@ function Diario() {
             />
             <Fila
               t="Sabotaje"
-              v={detalle.manana.sabotaje ? ETIQUETA_SABOTAJE[detalle.manana.sabotaje] : "—"}
+              v={
+                detalle.manana.sabotaje
+                  ? (ETIQUETA_SABOTAJE[detalle.manana.sabotaje] ?? "—")
+                  : "—"
+              }
             />
             {detalle.insight ? (
               <p className="mt-4 leading-relaxed text-foreground">{detalle.insight}</p>
