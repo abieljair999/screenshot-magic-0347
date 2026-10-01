@@ -49,7 +49,6 @@ function Hoy() {
 
   const hora = new Date().getHours();
   const esManana = hora >= 4 && hora < 16;
-  const nochesRegistradas = Object.values(useNocheSemana()).length;
 
   const cerrada = Boolean(nocheHoy?.manana);
   const ciclo = numero > 14;
