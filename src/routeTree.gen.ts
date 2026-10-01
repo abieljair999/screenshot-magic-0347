@@ -10,13 +10,32 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DespiertoRouteImport } from './routes/despierto'
+import { Route as DiarioRouteImport } from './routes/diario'
+import { Route as MadrugadaRouteImport } from './routes/madrugada'
 import { Route as MananaRouteImport } from './routes/manana'
 import { Route as NocheRouteImport } from './routes/noche'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as PlanRouteImport } from './routes/plan'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DespiertoRoute = DespiertoRouteImport.update({
+  id: '/despierto',
+  path: '/despierto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiarioRoute = DiarioRouteImport.update({
+  id: '/diario',
+  path: '/diario',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MadrugadaRoute = MadrugadaRouteImport.update({
+  id: '/madrugada',
+  path: '/madrugada',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MananaRoute = MananaRouteImport.update({
@@ -34,39 +53,85 @@ const OnboardingRoute = OnboardingRouteImport.update({
   path: '/onboarding',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlanRoute = PlanRouteImport.update({
+  id: '/plan',
+  path: '/plan',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/despierto': typeof DespiertoRoute
+  '/diario': typeof DiarioRoute
+  '/madrugada': typeof MadrugadaRoute
   '/manana': typeof MananaRoute
   '/noche': typeof NocheRoute
   '/onboarding': typeof OnboardingRoute
+  '/plan': typeof PlanRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/despierto': typeof DespiertoRoute
+  '/diario': typeof DiarioRoute
+  '/madrugada': typeof MadrugadaRoute
   '/manana': typeof MananaRoute
   '/noche': typeof NocheRoute
   '/onboarding': typeof OnboardingRoute
+  '/plan': typeof PlanRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/despierto': typeof DespiertoRoute
+  '/diario': typeof DiarioRoute
+  '/madrugada': typeof MadrugadaRoute
   '/manana': typeof MananaRoute
   '/noche': typeof NocheRoute
   '/onboarding': typeof OnboardingRoute
+  '/plan': typeof PlanRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/manana' | '/noche' | '/onboarding'
+  fullPaths:
+    | '/'
+    | '/despierto'
+    | '/diario'
+    | '/madrugada'
+    | '/manana'
+    | '/noche'
+    | '/onboarding'
+    | '/plan'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/manana' | '/noche' | '/onboarding'
-  id: '__root__' | '/' | '/manana' | '/noche' | '/onboarding'
+  to:
+    | '/'
+    | '/despierto'
+    | '/diario'
+    | '/madrugada'
+    | '/manana'
+    | '/noche'
+    | '/onboarding'
+    | '/plan'
+  id:
+    | '__root__'
+    | '/'
+    | '/despierto'
+    | '/diario'
+    | '/madrugada'
+    | '/manana'
+    | '/noche'
+    | '/onboarding'
+    | '/plan'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DespiertoRoute: typeof DespiertoRoute
+  DiarioRoute: typeof DiarioRoute
+  MadrugadaRoute: typeof MadrugadaRoute
   MananaRoute: typeof MananaRoute
   NocheRoute: typeof NocheRoute
   OnboardingRoute: typeof OnboardingRoute
+  PlanRoute: typeof PlanRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -76,6 +141,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/despierto': {
+      id: '/despierto'
+      path: '/despierto'
+      fullPath: '/despierto'
+      preLoaderRoute: typeof DespiertoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diario': {
+      id: '/diario'
+      path: '/diario'
+      fullPath: '/diario'
+      preLoaderRoute: typeof DiarioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/madrugada': {
+      id: '/madrugada'
+      path: '/madrugada'
+      fullPath: '/madrugada'
+      preLoaderRoute: typeof MadrugadaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/manana': {
@@ -99,14 +185,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OnboardingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/plan': {
+      id: '/plan'
+      path: '/plan'
+      fullPath: '/plan'
+      preLoaderRoute: typeof PlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DespiertoRoute: DespiertoRoute,
+  DiarioRoute: DiarioRoute,
+  MadrugadaRoute: MadrugadaRoute,
   MananaRoute: MananaRoute,
   NocheRoute: NocheRoute,
   OnboardingRoute: OnboardingRoute,
+  PlanRoute: PlanRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
