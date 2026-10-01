@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AjustesRouteImport } from './routes/ajustes'
 import { Route as DespiertoRouteImport } from './routes/despierto'
 import { Route as DiarioRouteImport } from './routes/diario'
 import { Route as MadrugadaRouteImport } from './routes/madrugada'
@@ -17,10 +18,16 @@ import { Route as MananaRouteImport } from './routes/manana'
 import { Route as NocheRouteImport } from './routes/noche'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as PlanRouteImport } from './routes/plan'
+import { Route as SuscripcionRouteImport } from './routes/suscripcion'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AjustesRoute = AjustesRouteImport.update({
+  id: '/ajustes',
+  path: '/ajustes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DespiertoRoute = DespiertoRouteImport.update({
@@ -58,9 +65,15 @@ const PlanRoute = PlanRouteImport.update({
   path: '/plan',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SuscripcionRoute = SuscripcionRouteImport.update({
+  id: '/suscripcion',
+  path: '/suscripcion',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ajustes': typeof AjustesRoute
   '/despierto': typeof DespiertoRoute
   '/diario': typeof DiarioRoute
   '/madrugada': typeof MadrugadaRoute
@@ -68,9 +81,11 @@ export interface FileRoutesByFullPath {
   '/noche': typeof NocheRoute
   '/onboarding': typeof OnboardingRoute
   '/plan': typeof PlanRoute
+  '/suscripcion': typeof SuscripcionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ajustes': typeof AjustesRoute
   '/despierto': typeof DespiertoRoute
   '/diario': typeof DiarioRoute
   '/madrugada': typeof MadrugadaRoute
@@ -78,10 +93,12 @@ export interface FileRoutesByTo {
   '/noche': typeof NocheRoute
   '/onboarding': typeof OnboardingRoute
   '/plan': typeof PlanRoute
+  '/suscripcion': typeof SuscripcionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ajustes': typeof AjustesRoute
   '/despierto': typeof DespiertoRoute
   '/diario': typeof DiarioRoute
   '/madrugada': typeof MadrugadaRoute
@@ -89,11 +106,13 @@ export interface FileRoutesById {
   '/noche': typeof NocheRoute
   '/onboarding': typeof OnboardingRoute
   '/plan': typeof PlanRoute
+  '/suscripcion': typeof SuscripcionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/ajustes'
     | '/despierto'
     | '/diario'
     | '/madrugada'
@@ -101,9 +120,11 @@ export interface FileRouteTypes {
     | '/noche'
     | '/onboarding'
     | '/plan'
+    | '/suscripcion'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/ajustes'
     | '/despierto'
     | '/diario'
     | '/madrugada'
@@ -111,9 +132,11 @@ export interface FileRouteTypes {
     | '/noche'
     | '/onboarding'
     | '/plan'
+    | '/suscripcion'
   id:
     | '__root__'
     | '/'
+    | '/ajustes'
     | '/despierto'
     | '/diario'
     | '/madrugada'
@@ -121,10 +144,12 @@ export interface FileRouteTypes {
     | '/noche'
     | '/onboarding'
     | '/plan'
+    | '/suscripcion'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AjustesRoute: typeof AjustesRoute
   DespiertoRoute: typeof DespiertoRoute
   DiarioRoute: typeof DiarioRoute
   MadrugadaRoute: typeof MadrugadaRoute
@@ -132,6 +157,7 @@ export interface RootRouteChildren {
   NocheRoute: typeof NocheRoute
   OnboardingRoute: typeof OnboardingRoute
   PlanRoute: typeof PlanRoute
+  SuscripcionRoute: typeof SuscripcionRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -141,6 +167,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ajustes': {
+      id: '/ajustes'
+      path: '/ajustes'
+      fullPath: '/ajustes'
+      preLoaderRoute: typeof AjustesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/despierto': {
@@ -192,11 +225,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlanRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/suscripcion': {
+      id: '/suscripcion'
+      path: '/suscripcion'
+      fullPath: '/suscripcion'
+      preLoaderRoute: typeof SuscripcionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AjustesRoute: AjustesRoute,
   DespiertoRoute: DespiertoRoute,
   DiarioRoute: DiarioRoute,
   MadrugadaRoute: MadrugadaRoute,
@@ -204,6 +245,7 @@ const rootRouteChildren: RootRouteChildren = {
   NocheRoute: NocheRoute,
   OnboardingRoute: OnboardingRoute,
   PlanRoute: PlanRoute,
+  SuscripcionRoute: SuscripcionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

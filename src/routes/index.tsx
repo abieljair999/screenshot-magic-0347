@@ -128,15 +128,6 @@ function Hoy() {
   );
 }
 
-function useNocheSemana() {
-  const { noches } = useNoche();
-  const limite = new Date();
-  limite.setDate(limite.getDate() - 6);
-  const desde = hoyKey(limite);
-  return Object.fromEntries(
-    Object.entries(noches).filter(([k, n]) => k >= desde && (n.manana || n.noche)),
-  );
-}
 
 function Dato({ titulo, valor }: { titulo: string; valor: string }) {
   return (
