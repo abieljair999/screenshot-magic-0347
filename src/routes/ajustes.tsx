@@ -19,7 +19,7 @@ export const Route = createFileRoute("/ajustes")({
       },
     ],
   }),
-  component: Ajustes;
+  component: Ajustes,
 });
 
 function Ajustes() {

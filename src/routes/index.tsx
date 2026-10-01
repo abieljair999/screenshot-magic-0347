@@ -25,12 +25,19 @@ export const Route = createFileRoute("/")({
 });
 
 function Hoy() {
-  const { listo, perfil, plan, numero, itemHoy, nocheHoy } = useNoche();
+  const { listo, perfil, plan, numero, itemHoy, nocheHoy, noches } = useNoche();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (listo && !perfil) navigate({ to: "/onboarding" });
   }, [listo, perfil, navigate]);
+
+  const limite = new Date();
+  limite.setDate(limite.getDate() - 6);
+  const desde = hoyKey(limite);
+  const nochesRegistradas = Object.entries(noches).filter(
+    ([k, n]) => k >= desde && (n.manana || n.noche),
+  ).length;
 
   if (!listo || !perfil || !itemHoy) {
     return (
