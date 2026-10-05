@@ -10,16 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AjustesRouteImport } from './routes/ajustes'
-import { Route as DespiertoRouteImport } from './routes/despierto'
-import { Route as DiarioRouteImport } from './routes/diario'
-import { Route as MadrugadaRouteImport } from './routes/madrugada'
-import { Route as MananaRouteImport } from './routes/manana'
 import { Route as McpRouteImport } from './routes/mcp'
-import { Route as NocheRouteImport } from './routes/noche'
-import { Route as OnboardingRouteImport } from './routes/onboarding'
-import { Route as PlanRouteImport } from './routes/plan'
-import { Route as SuscripcionRouteImport } from './routes/suscripcion'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 
 const IndexRoute = IndexRouteImport.update({
@@ -27,54 +18,9 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AjustesRoute = AjustesRouteImport.update({
-  id: '/ajustes',
-  path: '/ajustes',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DespiertoRoute = DespiertoRouteImport.update({
-  id: '/despierto',
-  path: '/despierto',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DiarioRoute = DiarioRouteImport.update({
-  id: '/diario',
-  path: '/diario',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MadrugadaRoute = MadrugadaRouteImport.update({
-  id: '/madrugada',
-  path: '/madrugada',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MananaRoute = MananaRouteImport.update({
-  id: '/manana',
-  path: '/manana',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const McpRoute = McpRouteImport.update({
   id: '/mcp',
   path: '/mcp',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NocheRoute = NocheRouteImport.update({
-  id: '/noche',
-  path: '/noche',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OnboardingRoute = OnboardingRouteImport.update({
-  id: '/onboarding',
-  path: '/onboarding',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PlanRoute = PlanRouteImport.update({
-  id: '/plan',
-  path: '/plan',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SuscripcionRoute = SuscripcionRouteImport.update({
-  id: '/suscripcion',
-  path: '/suscripcion',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Char91DotwellKnownChar93OauthProtectedResourceRoute =
@@ -86,104 +32,31 @@ const Char91DotwellKnownChar93OauthProtectedResourceRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/ajustes': typeof AjustesRoute
-  '/despierto': typeof DespiertoRoute
-  '/diario': typeof DiarioRoute
-  '/madrugada': typeof MadrugadaRoute
-  '/manana': typeof MananaRoute
   '/mcp': typeof McpRoute
-  '/noche': typeof NocheRoute
-  '/onboarding': typeof OnboardingRoute
-  '/plan': typeof PlanRoute
-  '/suscripcion': typeof SuscripcionRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/ajustes': typeof AjustesRoute
-  '/despierto': typeof DespiertoRoute
-  '/diario': typeof DiarioRoute
-  '/madrugada': typeof MadrugadaRoute
-  '/manana': typeof MananaRoute
   '/mcp': typeof McpRoute
-  '/noche': typeof NocheRoute
-  '/onboarding': typeof OnboardingRoute
-  '/plan': typeof PlanRoute
-  '/suscripcion': typeof SuscripcionRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/ajustes': typeof AjustesRoute
-  '/despierto': typeof DespiertoRoute
-  '/diario': typeof DiarioRoute
-  '/madrugada': typeof MadrugadaRoute
-  '/manana': typeof MananaRoute
   '/mcp': typeof McpRoute
-  '/noche': typeof NocheRoute
-  '/onboarding': typeof OnboardingRoute
-  '/plan': typeof PlanRoute
-  '/suscripcion': typeof SuscripcionRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/ajustes'
-    | '/despierto'
-    | '/diario'
-    | '/madrugada'
-    | '/manana'
-    | '/mcp'
-    | '/noche'
-    | '/onboarding'
-    | '/plan'
-    | '/suscripcion'
-    | '/.well-known/oauth-protected-resource'
+  fullPaths: '/' | '/mcp' | '/.well-known/oauth-protected-resource'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/ajustes'
-    | '/despierto'
-    | '/diario'
-    | '/madrugada'
-    | '/manana'
-    | '/mcp'
-    | '/noche'
-    | '/onboarding'
-    | '/plan'
-    | '/suscripcion'
-    | '/.well-known/oauth-protected-resource'
-  id:
-    | '__root__'
-    | '/'
-    | '/ajustes'
-    | '/despierto'
-    | '/diario'
-    | '/madrugada'
-    | '/manana'
-    | '/mcp'
-    | '/noche'
-    | '/onboarding'
-    | '/plan'
-    | '/suscripcion'
-    | '/.well-known/oauth-protected-resource'
+  to: '/' | '/mcp' | '/.well-known/oauth-protected-resource'
+  id: '__root__' | '/' | '/mcp' | '/.well-known/oauth-protected-resource'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AjustesRoute: typeof AjustesRoute
-  DespiertoRoute: typeof DespiertoRoute
-  DiarioRoute: typeof DiarioRoute
-  MadrugadaRoute: typeof MadrugadaRoute
-  MananaRoute: typeof MananaRoute
   McpRoute: typeof McpRoute
-  NocheRoute: typeof NocheRoute
-  OnboardingRoute: typeof OnboardingRoute
-  PlanRoute: typeof PlanRoute
-  SuscripcionRoute: typeof SuscripcionRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 
@@ -196,74 +69,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/ajustes': {
-      id: '/ajustes'
-      path: '/ajustes'
-      fullPath: '/ajustes'
-      preLoaderRoute: typeof AjustesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/despierto': {
-      id: '/despierto'
-      path: '/despierto'
-      fullPath: '/despierto'
-      preLoaderRoute: typeof DespiertoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/diario': {
-      id: '/diario'
-      path: '/diario'
-      fullPath: '/diario'
-      preLoaderRoute: typeof DiarioRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/madrugada': {
-      id: '/madrugada'
-      path: '/madrugada'
-      fullPath: '/madrugada'
-      preLoaderRoute: typeof MadrugadaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/manana': {
-      id: '/manana'
-      path: '/manana'
-      fullPath: '/manana'
-      preLoaderRoute: typeof MananaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/mcp': {
       id: '/mcp'
       path: '/mcp'
       fullPath: '/mcp'
       preLoaderRoute: typeof McpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/noche': {
-      id: '/noche'
-      path: '/noche'
-      fullPath: '/noche'
-      preLoaderRoute: typeof NocheRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/onboarding': {
-      id: '/onboarding'
-      path: '/onboarding'
-      fullPath: '/onboarding'
-      preLoaderRoute: typeof OnboardingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/plan': {
-      id: '/plan'
-      path: '/plan'
-      fullPath: '/plan'
-      preLoaderRoute: typeof PlanRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/suscripcion': {
-      id: '/suscripcion'
-      path: '/suscripcion'
-      fullPath: '/suscripcion'
-      preLoaderRoute: typeof SuscripcionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/.well-known/oauth-protected-resource': {
@@ -278,16 +88,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AjustesRoute: AjustesRoute,
-  DespiertoRoute: DespiertoRoute,
-  DiarioRoute: DiarioRoute,
-  MadrugadaRoute: MadrugadaRoute,
-  MananaRoute: MananaRoute,
   McpRoute: McpRoute,
-  NocheRoute: NocheRoute,
-  OnboardingRoute: OnboardingRoute,
-  PlanRoute: PlanRoute,
-  SuscripcionRoute: SuscripcionRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
 }
